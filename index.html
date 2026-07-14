@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Krowdit gives growing companies the output of a full role without the hiring risk.">
+  <title>Krowdit | The output of your next hire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#1a1714; --ink-2:#241e17; --paper:#f7f3ec; --paper-2:#efe9de; --amber:#de7a18; --amber-bright:#f2a24a; --muted:#b3a794; --rule:#3a322a; --copy:#4a423b; --green:#1f8a5b; --max:1180px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Archivo,Arial,sans-serif; font-size:16px; line-height:1.55; }
+    a { color:inherit; text-decoration:none; }
+    button, input, select { font:inherit; }
+    .container { width:min(calc(100% - 48px), var(--max)); margin:0 auto; }
+    .eyebrow { display:flex; align-items:center; gap:10px; font:500 11px/1.2 "IBM Plex Mono",monospace; letter-spacing:.13em; text-transform:uppercase; color:var(--amber); }
+    .eyebrow::after { content:""; width:38px; height:1px; background:currentColor; opacity:.8; }
+    .button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; gap:10px; border:1px solid transparent; border-radius:3px; padding:0 20px; font-size:14px; font-weight:600; cursor:pointer; transition:background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+    .button:hover { transform:translateY(-2px); }
+    .button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline:3px solid var(--amber-bright); outline-offset:3px; }
+    .button--amber { background:var(--amber); color:#fff; }
+    .button--amber:hover { background:#c96710; }
+    .button--paper { background:var(--paper); color:var(--ink); }
+    .button--paper:hover { background:#fff; }
+    .button--line { border-color:#73685b; color:var(--paper); }
+    .button--line:hover { border-color:var(--amber-bright); color:var(--amber-bright); }
+    .brand { display:flex; align-items:center; gap:11px; font-family:Newsreader,Georgia,serif; font-size:28px; letter-spacing:-.04em; line-height:1; }
+    .mark { display:flex; align-items:center; gap:4px; height:30px; transform:skewX(-16deg); }
+    .mark i { display:block; width:6px; height:28px; background:var(--amber); }
+    .mark i:nth-child(2) { opacity:.58; } .mark i:nth-child(3) { opacity:.28; }
+    .site-header { position:absolute; z-index:10; inset:0 0 auto; color:var(--paper); }
+    .nav { display:flex; height:80px; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(247,243,236,.16); }
+    .nav__links { display:flex; align-items:center; gap:27px; font-size:13px; color:#ded5c7; }
+    .nav__links a { transition:color .2s ease; }
+    .nav__links a:hover { color:var(--amber-bright); }
+    .nav__menu { display:none; background:transparent; color:var(--paper); border:0; padding:10px; cursor:pointer; }
+    .nav__menu svg { display:block; }
+    .hero { position:relative; overflow:hidden; min-height:760px; padding:177px 0 70px; color:var(--paper); background:var(--ink); }
+    .hero::before { content:""; position:absolute; width:660px; height:660px; right:-255px; top:-205px; border:1px solid rgba(242,162,74,.17); border-radius:50%; box-shadow:0 0 0 62px rgba(242,162,74,.035),0 0 0 124px rgba(242,162,74,.025); }
+    .hero::after { content:""; position:absolute; right:8%; bottom:-90px; width:520px; height:330px; opacity:.38; background:repeating-linear-gradient(120deg, transparent 0 22px, rgba(242,162,74,.12) 22px 24px, transparent 24px 48px); transform:skewX(-12deg); }
+    .hero__grid { position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:68px; align-items:end; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:760px; margin:18px 0 24px; font-family:Newsreader,Georgia,serif; font-weight:400; font-size:clamp(54px,6.2vw,86px); line-height:.93; letter-spacing:-.055em; }
+    .hero__copy { max-width:550px; margin:0 0 31px; color:#c3b8a9; font-size:18px; line-height:1.65; }
+    .hero__actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero__note { margin:23px 0 0; color:#8e8172; font:11px/1.5 "IBM Plex Mono",monospace; letter-spacing:.03em; }
+    .role-card { position:relative; overflow:hidden; padding:29px; min-height:410px; background:#241e17; border:1px solid #40372d; border-radius:8px; box-shadow:0 24px 48px rgba(0,0,0,.18); }
+    .role-card__label { display:flex; justify-content:space-between; padding-bottom:19px; margin-bottom:28px; border-bottom:1px solid #40372d; color:var(--muted); font:10px/1 "IBM Plex Mono",monospace; letter-spacing:.12em; text-transform:uppercase; }
+    .role-card__title { margin-bottom:7px; font-family:Newsreader,Georgia,serif; font-size:37px; font-weight:400; line-height:1; letter-spacing:-.035em; }
+    .role-card__sub { margin:0 0 30px; color:var(--muted); font-size:13px; }
+    .output { display:grid; grid-template-columns:34px 1fr; gap:12px; padding:13px 0; border-top:1px solid #40372d; color:#e3dcd1; font-size:13px; }
+    .output__num { color:var(--amber-bright); font:11px/1.45 "IBM Plex Mono",monospace; }
+    .role-card__footer { position:absolute; inset:auto 29px 25px; display:flex; align-items:center; justify-content:space-between; color:var(--amber-bright); font:10px/1 "IBM Plex Mono",monospace; letter-spacing:.12em; text-transform:uppercase; }
+    .role-card__footer svg { width:18px; height:18px; }
+    .intro { padding:92px 0 84px; background:var(--paper); }
+    .intro__grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:90px; align-items:start; }
+    .intro h2, .section-heading h2, .closing h2 { margin:16px 0 0; font:400 clamp(38px,4.2vw,60px)/.98 Newsreader,Georgia,serif; letter-spacing:-.045em; }
+    .intro__copy { padding-top:32px; font-size:18px; color:var(--copy); }
+    .intro__copy p { max-width:600px; }
+    .definition { display:grid; grid-template-columns:135px 1fr; gap:17px; padding:20px 0; border-top:1px solid #dcd3c4; }
+    .definition:last-child { border-bottom:1px solid #dcd3c4; }
+    .definition__term { color:#766c61; font:10px/1.35 "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase; }
+    .definition__detail { font-size:14px; line-height:1.6; }
+    .difference { padding:92px 0; background:var(--ink); color:var(--paper); }
+    .section-heading { max-width:660px; }
+    .section-heading p { max-width:550px; margin:22px 0 0; color:var(--muted); }
+    .comparison { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:45px; }
+    .comparison__card { min-height:260px; padding:25px; border-radius:6px; border:1px solid #40372d; background:#211c17; }
+    .comparison__card--featured { border-color:var(--amber); background:#2a1d10; }
+    .comparison__tag { margin-bottom:39px; color:var(--muted); font:10px/1.2 "IBM Plex Mono",monospace; letter-spacing:.13em; text-transform:uppercase; }
+    .comparison__card--featured .comparison__tag { color:var(--amber-bright); }
+    .comparison h3 { margin-bottom:13px; font:400 31px/1 Newsreader,Georgia,serif; letter-spacing:-.035em; }
+    .comparison p { margin:0; color:#b3a794; font-size:14px; }
+    .comparison__card--featured p { color:#ded1c1; }
+    .comparison__marker { margin-top:31px; color:var(--amber-bright); font:10px/1 "IBM Plex Mono",monospace; letter-spacing:.11em; text-transform:uppercase; }
+    .pillars { padding:94px 0; }
+    .pillars__grid { display:grid; grid-template-columns:.83fr 1.17fr; gap:88px; align-items:start; }
+    .pillars__list { display:flex; flex-direction:column; border-top:1px solid #dcd3c4; }
+    .pillar { display:grid; grid-template-columns:54px 1fr; gap:18px; padding:23px 0; border-bottom:1px solid #dcd3c4; }
+    .pillar__number { padding-top:4px; color:var(--amber); font:11px/1 "IBM Plex Mono",monospace; letter-spacing:.1em; }
+    .pillar h3 { margin:0 0 8px; font:500 23px/1.08 Newsreader,Georgia,serif; letter-spacing:-.025em; }
+    .pillar p { margin:0; color:#665e55; font-size:14px; }
+    .proof { padding:91px 0; background:var(--paper-2); }
+    .proof__frame { display:grid; grid-template-columns:1.1fr .9fr; overflow:hidden; border:1px solid #d7cdbd; border-radius:8px; background:var(--paper); }
+    .proof__content { padding:50px; }
+    .proof__content h2 { max-width:550px; margin:16px 0 23px; font:400 clamp(37px,4vw,56px)/.98 Newsreader,Georgia,serif; letter-spacing:-.045em; }
+    .proof__content p { max-width:520px; color:var(--copy); font-size:17px; }
+    .proof__stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:37px; }
+    .stat { border-top:2px solid var(--amber); padding-top:11px; }
+    .stat strong { display:block; margin-bottom:3px; font:500 28px/1 Newsreader,Georgia,serif; letter-spacing:-.03em; }
+    .stat span { color:#766c61; font-size:11px; line-height:1.35; }
+    .proof__visual { position:relative; min-height:430px; padding:28px; color:var(--paper); background:var(--ink); }
+    .proof__visual::before { content:""; position:absolute; right:-100px; bottom:-95px; width:395px; height:395px; border:1px solid rgba(242,162,74,.32); border-radius:50%; box-shadow:0 0 0 50px rgba(242,162,74,.06),0 0 0 100px rgba(242,162,74,.035); }
+    .system { position:relative; z-index:1; display:grid; gap:12px; margin-top:35px; }
+    .system__item { display:grid; grid-template-columns:42px 1fr; gap:12px; align-items:center; padding:16px; border:1px solid #40372d; border-radius:5px; background:rgba(36,30,23,.92); }
+    .system__icon { display:grid; width:34px; height:34px; place-items:center; border:1px solid #80623e; border-radius:50%; color:var(--amber-bright); }
+    .system__icon svg { width:16px; height:16px; }
+    .system__item strong { display:block; font-size:13px; }
+    .system__item span { color:var(--muted); font-size:11px; }
+    .industries { padding:94px 0; background:var(--ink); color:var(--paper); }
+    .industry-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:43px; }
+    .industry { min-height:210px; padding:25px; border:1px solid #40372d; border-radius:6px; background:#211c17; }
+    .industry__icon { display:grid; width:37px; height:37px; place-items:center; margin-bottom:45px; color:var(--amber-bright); border:1px solid #695232; border-radius:3px; }
+    .industry__icon svg { width:19px; height:19px; }
+    .industry h3 { margin:0 0 7px; font:400 25px/1 Newsreader,Georgia,serif; letter-spacing:-.025em; }
+    .industry p { margin:0; color:var(--muted); font-size:13px; }
+    .closing { padding:103px 0; background:var(--paper); }
+    .closing__grid { display:grid; grid-template-columns:.86fr 1.14fr; gap:88px; align-items:start; }
+    .closing h2 { max-width:480px; }
+    .contact-form { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:27px; border:1px solid #d7cdbd; border-radius:6px; background:#fffdfa; }
+    .field { display:flex; flex-direction:column; gap:7px; }
+    .field--full { grid-column:1 / -1; }
+    label { color:#675e54; font:10px/1 "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase; }
+    input, select { width:100%; min-height:48px; border:1px solid #d7cdbd; border-radius:2px; padding:0 12px; color:var(--ink); background:#fff; font-size:14px; }
+    input::placeholder { color:#9a8d7f; }
+    .form-note { min-height:20px; grid-column:1 / -1; margin:0; color:var(--green); font-size:13px; }
+    .footer { padding:27px 0; color:var(--muted); background:var(--ink); }
+    .footer__row { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .footer .brand { color:var(--paper); font-size:23px; }
+    .footer small { font:10px/1.4 "IBM Plex Mono",monospace; letter-spacing:.08em; text-transform:uppercase; }
+    @media (max-width:850px) { .hero { min-height:auto; padding-top:142px; } .hero__grid,.intro__grid,.pillars__grid,.proof__frame,.closing__grid { grid-template-columns:1fr; gap:45px; } .role-card { max-width:570px; min-height:360px; } .comparison,.industry-grid { grid-template-columns:1fr; } .comparison__card { min-height:210px; } .proof__visual { min-height:350px; } .intro__copy { padding-top:0; } .closing { padding:80px 0; } }
+    @media (max-width:640px) { .container { width:min(calc(100% - 32px),var(--max)); } .nav { height:70px; } .nav__links { display:none; } .nav__menu { display:block; } .nav__links.is-open { position:absolute; top:70px; left:16px; right:16px; display:flex; flex-direction:column; align-items:stretch; gap:0; padding:12px; border:1px solid #493e32; border-radius:5px; background:var(--ink-2); } .nav__links.is-open a { padding:12px; } .nav__links .button { display:none; } .nav__links.is-open .button { display:flex; margin-top:6px; } .hero { padding:127px 0 52px; } h1 { font-size:52px; } .hero__copy { font-size:16px; } .role-card { padding:23px; } .role-card__footer { inset:auto 23px 21px; } .intro,.difference,.pillars,.proof,.industries { padding:68px 0; } .definition { grid-template-columns:1fr; gap:8px; } .pillar { grid-template-columns:34px 1fr; } .proof__content { padding:31px 25px; } .proof__stats { grid-template-columns:1fr; gap:17px; } .industry-grid { gap:11px; } .contact-form { grid-template-columns:1fr; padding:21px; } .field--full { grid-column:auto; } .footer__row { align-items:flex-start; flex-direction:column; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Krowdit home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Krowdit</a>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a href="#model">The model</a><a href="#roles">What we deliver</a><a href="#industries">Industries</a><a href="#contact" class="button button--amber">Talk to Krowdit <span aria-hidden="true">→</span></a>
+      </nav>
+      <button class="nav__menu" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div>
+          <div class="eyebrow">Managed workforce</div>
+          <h1 id="hero-title">The output of your next hire.</h1>
+          <p class="hero__copy">Deploy a dedicated Krowdit professional who works as your own - fully managed, backed by systems and AI, and built to deliver a full role's output.</p>
+          <div class="hero__actions"><a class="button button--amber" href="#contact">Talk to Krowdit <span aria-hidden="true">→</span></a><a class="button button--line" href="#model">See how it works</a></div>
+          <p class="hero__note">Month to month &nbsp; / &nbsp; Fully managed &nbsp; / &nbsp; No hiring risk</p>
+        </div>
+        <aside class="role-card" aria-label="Example Krowdit managed marketing role">
+          <div class="role-card__label"><span>Deployed role</span><span>Marketing</span></div>
+          <div class="role-card__title">Your marketing function.</div>
+          <p class="role-card__sub">One dedicated professional, with a team and operating system behind them.</p>
+          <div class="output"><span class="output__num">01</span><span>Campaign planning and production</span></div>
+          <div class="output"><span class="output__num">02</span><span>Content, media, and creative execution</span></div>
+          <div class="output"><span class="output__num">03</span><span>Reporting, iteration, and clear ownership</span></div>
+          <div class="role-card__footer"><span>Managed by Krowdit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro" id="model" aria-labelledby="model-title">
+      <div class="container intro__grid">
+        <div><div class="eyebrow">A better hiring decision</div><h2 id="model-title">You need the role. You do not need the risk.</h2></div>
+        <div class="intro__copy">
+          <p>Hiring is slow, expensive, and uncertain. Agencies can feel distant and bill by the hour. Krowdit gives growing companies a third option: dedicated people who work as your own, with the people management and operating system already handled.</p>
+          <div class="definition"><div class="definition__term">Dedicated</div><div class="definition__detail">A Krowdit professional works in your rhythm and owns the outputs that matter to your business.</div></div>
+          <div class="definition"><div class="definition__term">Managed</div><div class="definition__detail">Krowdit manages performance, process, and support behind the scenes, so you do not become another manager.</div></div>
+          <div class="definition"><div class="definition__term">Flexible</div><div class="definition__detail">Scale up, scale down, or stop month to month. No severance. No bad-hire cleanup.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="difference" aria-labelledby="difference-title">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow">A third option</div><h2 id="difference-title">Keep the output. Lose the hiring burden.</h2><p>Krowdit is not an agency and it is not a staffing marketplace. It is managed capacity, designed around a real business function.</p></div>
+        <div class="comparison">
+          <article class="comparison__card"><div class="comparison__tag">Traditional hire</div><h3>Hire an employee</h3><p>Slow to recruit. Expensive to unwind. Performance risk sits with you.</p></article>
+          <article class="comparison__card"><div class="comparison__tag">External service</div><h3>Hire an agency</h3><p>Often distant, expensive, and optimized around hours instead of ownership.</p></article>
+          <article class="comparison__card comparison__card--featured"><div class="comparison__tag">Managed workforce</div><h3>Deploy Krowdit</h3><p>Dedicated people, fully managed by Krowdit, delivering the output of the role as your own team.</p><div class="comparison__marker">Month to month →</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillars" id="roles" aria-labelledby="pillars-title">
+      <div class="container pillars__grid">
+        <div><div class="eyebrow">Why Krowdit</div><h2 id="pillars-title">A role is more than one seat.</h2></div>
+        <div class="pillars__list">
+          <article class="pillar"><div class="pillar__number">01</div><div><h3>Replace the hire. Keep the output.</h3><p>Get the work done without recruiting, onboarding, or managing anyone.</p></div></article>
+          <article class="pillar"><div class="pillar__number">02</div><div><h3>A team behind every seat.</h3><p>Your dedicated professional is backed by Krowdit's senior operators, shared systems, and AI-enabled workflows.</p></div></article>
+          <article class="pillar"><div class="pillar__number">03</div><div><h3>None of the risk.</h3><p>Operate month to month. Adjust capacity as priorities change. No permanent headcount commitment.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-labelledby="proof-title">
+      <div class="container proof__frame">
+        <div class="proof__content"><div class="eyebrow">More than a solo hire</div><h2 id="proof-title">Senior oversight. Shared systems. A clear owner.</h2><p>Each Krowdit professional is set up to deliver with the support most growing companies cannot build around a single new hire.</p><div class="proof__stats"><div class="stat"><strong>1</strong><span>Dedicated person embedded in your work</span></div><div class="stat"><strong>+ team</strong><span>Senior guidance and specialist support</span></div><div class="stat"><strong>+ systems</strong><span>AI-enabled workflows that keep output moving</span></div></div></div>
+        <div class="proof__visual"><div class="eyebrow">Your Krowdit system</div><div class="system"><div class="system__item"><div class="system__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 20v-1a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><strong>Dedicated professional</strong><span>Owns the work and works in your rhythm</span></div></div><div class="system__item"><div class="system__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><div><strong>Shared operating system</strong><span>Standards, workflows, and visible progress</span></div></div><div class="system__item"><div class="system__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></div><div><strong>AI acceleration</strong><span>More leverage, without less accountability</span></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="industries" id="industries" aria-labelledby="industries-title">
+      <div class="container"><div class="section-heading"><div class="eyebrow">Built for growing companies</div><h2 id="industries-title">Start with the work that needs to move.</h2><p>Krowdit begins where a dependable marketing function can make a visible difference, then expands with your business.</p></div><div class="industry-grid">
+        <article class="industry"><div class="industry__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3 12 9-8 9 8v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8ZM9 21v-6h6v6"/></svg></div><h3>Roofing</h3><p>Visible campaigns and consistent marketing output for teams in the field.</p></article>
+        <article class="industry"><div class="industry__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M4.2 7.5 19.8 16.5M4.2 16.5 19.8 7.5"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Solar</h3><p>Dedicated support for companies building demand in a fast-moving category.</p></article>
+        <article class="industry"><div class="industry__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 3h10v4H7zM5 7h14v14H5zM9 11h6M9 15h6"/></svg></div><h3>HVAC</h3><p>Reliable marketing capacity without creating another role to manage.</p></article>
+      </div></div>
+    </section>
+
+    <section class="closing" id="contact" aria-labelledby="contact-title">
+      <div class="container closing__grid"><div><div class="eyebrow">Talk to Krowdit</div><h2 id="contact-title">See what a managed workforce could take off your plate.</h2></div>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" placeholder="Company name" required></div>
+          <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div>
+          <div class="field"><label for="role">Role to fill</label><select id="role" name="role" required><option value="" selected disabled>Select a role</option><option>Marketing / media</option><option>Operations</option><option>Other</option></select></div>
+          <div class="field field--full"><button class="button button--amber" type="submit">Start a conversation <span aria-hidden="true">→</span></button></div>
+          <p class="form-note" id="form-note" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer__row"><a href="#top" class="brand" aria-label="Back to top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Krowdit</a><small>Managed workforce for growing companies</small></div></footer>
+  <script>
+    const menu = document.querySelector('.nav__menu'); const nav = document.querySelector('.nav__links');
+    menu.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); menu.setAttribute('aria-expanded', open); menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); });
+    document.querySelectorAll('.nav__links a').forEach(link => link.addEventListener('click', () => { nav.classList.remove('is-open'); menu.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-label', 'Open menu'); }));
+    document.querySelector('#contact-form').addEventListener('submit', event => { event.preventDefault(); const form = event.currentTarget; const note = document.querySelector('#form-note'); if (!form.checkValidity()) { form.reportValidity(); return; } note.textContent = 'Thank you. Your request is ready to route to the Krowdit team.'; form.reset(); });
+  </script>
+</body>
+</html>
