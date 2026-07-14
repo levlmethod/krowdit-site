@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:88px;}
+  body{margin:0;background:#F7F3EC;color:#1A1714;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:#DE7A18;text-decoration:none;}
+  a:hover{color:#1A1714;}
+  ::selection{background:#DE7A18;color:#1A1714;}
+</style>
+</helmet>
+
+<div id="top" style="position:relative;overflow-x:hidden;">
+<div id="top-sentinel" style="position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;"></div>
+
+<!-- ================= NAV ================= -->
+<nav style="{{ navStyle }}">
+  <div style="max-width:1200px;margin:0 auto;height:68px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="/#top" style="display:flex;align-items:center;gap:11px;">
+      <span style="display:flex;gap:3px;transform:skewX(-16deg);">
+        <span style="width:5px;height:24px;background:#DE7A18;display:block;"></span>
+        <span style="width:5px;height:24px;background:#DE7A18;opacity:0.55;display:block;"></span>
+        <span style="width:5px;height:24px;background:#DE7A18;opacity:0.28;display:block;"></span>
+      </span>
+      <span style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;letter-spacing:-0.01em;color:#1A1714;line-height:1;">Krowdit</span>
+    </a>
+
+    <div style="{{ desktopNav }}">
+      <a href="#top" style="font-size:15px;font-weight:500;color:#DE7A18;">How it works</a>
+      <div onMouseEnter="{{ onSolEnter }}" onMouseLeave="{{ onSolLeave }}" style="position:relative;">
+        <button style="font-family:'Archivo',sans-serif;font-size:15px;font-weight:500;color:#1A1714;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;" style-hover="color:#DE7A18;">Solutions<span style="display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;"></span></button>
+        <div style="{{ solPanel }}">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A99C8B;padding:4px 10px 8px;">By role</div>
+            <a href="#" style="display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#1A1714;font-size:14.5px;" style-hover="background:#F7F3EC;">Marketing <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1F8A5B;letter-spacing:0.08em;">LIVE</span></a>
+            <a href="#" style="display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#6B625A;font-size:14.5px;" style-hover="background:#F7F3EC;">Sales <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#A99C8B;letter-spacing:0.08em;">SOON</span></a>
+            <a href="#" style="display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#6B625A;font-size:14.5px;" style-hover="background:#F7F3EC;">Operations <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#A99C8B;letter-spacing:0.08em;">SOON</span></a>
+          </div>
+        </div>
+      </div>
+      <a href="/#why" style="font-size:15px;font-weight:500;color:#1A1714;" style-hover="color:#DE7A18;">Why Krowdit</a>
+      <a href="https://calendar.app.google/ZXH58B2NWMHAf2sW6" style="font-size:14.5px;font-weight:600;color:#F7F3EC;background:#1A1714;padding:11px 18px;border-radius:10px;transition:background .2s,color .2s;" style-hover="background:#DE7A18;color:#1A1714;">Book a consultation</a>
+    </div>
+
+    <button style="{{ hamburger }}" onClick="{{ toggleMobile }}" aria-label="Menu">
+      <span style="display:block;width:22px;height:2px;background:#1A1714;"></span>
+      <span style="display:block;width:22px;height:2px;background:#1A1714;"></span>
+      <span style="display:block;width:22px;height:2px;background:#1A1714;"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= MOBILE MENU ================= -->
+<div style="{{ mobileMenu }}">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;">
+    <span style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;color:#1A1714;">Krowdit</span>
+    <button onClick="{{ closeMobile }}" aria-label="Close" style="background:none;border:none;cursor:pointer;font-size:30px;line-height:1;color:#1A1714;">&times;</button>
+  </div>
+  <a href="#top" onClick="{{ closeMobile }}" style="font-family:'Newsreader',serif;font-size:30px;color:#1A1714;padding:14px 0;border-bottom:1px solid #DCD3C4;">How it works</a>
+  <a href="/#why" onClick="{{ closeMobile }}" style="font-family:'Newsreader',serif;font-size:30px;color:#1A1714;padding:14px 0;border-bottom:1px solid #DCD3C4;">Why Krowdit</a>
+  <a href="https://calendar.app.google/ZXH58B2NWMHAf2sW6" onClick="{{ closeMobile }}" style="margin-top:26px;text-align:center;font-size:16px;font-weight:600;color:#F7F3EC;background:#1A1714;padding:16px;border-radius:12px;">Book a consultation</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header style="position:relative;max-width:1200px;margin:0 auto;padding:150px 24px 80px;">
+  <div style="position:absolute;top:120px;right:-40px;display:flex;gap:20px;transform:skewX(-18deg);opacity:0.13;pointer-events:none;">
+    <div style="width:26px;height:460px;background:#DE7A18;"></div>
+    <div style="width:16px;height:460px;background:#DE7A18;opacity:0.6;"></div>
+    <div style="width:9px;height:460px;background:#DE7A18;opacity:0.35;"></div>
+  </div>
+  <div style="position:relative;max-width:820px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#DE7A18;margin-bottom:26px;">How it works</div>
+    <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(42px,6vw,78px);line-height:1.02;letter-spacing:-0.02em;margin:0;color:#1A1714;">A managed role, running in days.</h1>
+    <p style="font-size:clamp(17px,2.1vw,21px);line-height:1.6;color:#4A423B;margin:28px 0 0;max-width:620px;">No job posts. No interviews. No onboarding project. You tell us the role; we deploy a dedicated professional — backed by a full team — who works as your own and delivers the output from day one.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;">
+      <a href="https://calendar.app.google/ZXH58B2NWMHAf2sW6" style="font-size:16px;font-weight:600;color:#F7F3EC;background:#1A1714;padding:16px 26px;border-radius:12px;transition:background .2s,color .2s;" style-hover="background:#DE7A18;color:#1A1714;">Book a consultation</a>
+      <a href="#steps" style="font-size:16px;font-weight:600;color:#1A1714;background:none;border:1px solid #1A1714;padding:16px 26px;border-radius:12px;transition:background .2s,color .2s;" style-hover="background:#1A1714;color:#F7F3EC;">See the steps</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= STEPS ================= -->
+<section id="steps" style="background:#ECE4D7;border-top:1px solid #DCD3C4;border-bottom:1px solid #DCD3C4;">
+  <div style="max-width:1200px;margin:0 auto;padding:90px 24px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#DE7A18;margin-bottom:16px;">The process</div>
+    <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 48px;max-width:16ch;">Four steps from need to output.</h2>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:30px 0;border-top:1px solid #C9BEAC;align-items:start;">
+        <div style="font-family:'Newsreader',serif;font-weight:400;font-size:60px;line-height:0.9;letter-spacing:-0.02em;color:#DE7A18;">01</div>
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px;color:#1A1714;">Tell us the role</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#4A423B;margin:0;max-width:60ch;">On a short consultation we map the work you need done — the outcomes, the tools you use, the cadence, and how success is measured. No lengthy job description required; we translate your goals into a role.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:30px 0;border-top:1px solid #C9BEAC;align-items:start;">
+        <div style="font-family:'Newsreader',serif;font-weight:400;font-size:60px;line-height:0.9;letter-spacing:-0.02em;color:#DE7A18;">02</div>
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px;color:#1A1714;">We deploy your operator</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#4A423B;margin:0;max-width:60ch;">We match a capable professional to the role and stand a support team behind them — specialists, systems, and AI. They arrive ready to work, so there's no months-long training curve and no gamble on a single hire.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:30px 0;border-top:1px solid #C9BEAC;align-items:start;">
+        <div style="font-family:'Newsreader',serif;font-weight:400;font-size:60px;line-height:0.9;letter-spacing:-0.02em;color:#DE7A18;">03</div>
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px;color:#1A1714;">They work as your own</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#4A423B;margin:0;max-width:60ch;">Your operator embeds in your tools and joins your meetings, owning the output of the role. You direct the work and see it daily; we handle performance, continuity, and quality on the back end.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:30px 0;border-top:1px solid #C9BEAC;border-bottom:1px solid #C9BEAC;align-items:start;">
+        <div style="font-family:'Newsreader',serif;font-weight:400;font-size:60px;line-height:0.9;letter-spacing:-0.02em;color:#DE7A18;">04</div>
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px;color:#1A1714;">Adjust and scale as you go</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#4A423B;margin:0;max-width:60ch;">Pivot week to week, ramp up when you're busy, ramp down when you're not — month to month. No severance, no rehiring, no lost quarter if priorities change.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= YOU vs WE ================= -->
+<section style="max-width:1200px;margin:0 auto;padding:90px 24px;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#DE7A18;margin-bottom:16px;">The division of labor</div>
+  <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 44px;max-width:18ch;">You direct the work. We run everything behind it.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+    <div style="background:#FCFDFE;border:1px solid #DCD3C4;border-radius:16px;padding:32px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#6B625A;margin-bottom:20px;">You handle</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#1A1714;"><span style="color:#DE7A18;font-weight:700;flex:0 0 auto;">—</span>Setting the goals and priorities</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#1A1714;"><span style="color:#DE7A18;font-weight:700;flex:0 0 auto;">—</span>Directing the work and reviewing output</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#1A1714;"><span style="color:#DE7A18;font-weight:700;flex:0 0 auto;">—</span>Including them in your meetings and tools</div>
+      </div>
+    </div>
+    <div style="background:#1A1714;border:1px solid #1A1714;border-radius:16px;padding:32px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#F2A24A;margin-bottom:20px;">We handle</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#EDE6DA;"><span style="color:#F2A24A;font-weight:700;flex:0 0 auto;">—</span>Recruiting, vetting, and matching the operator</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#EDE6DA;"><span style="color:#F2A24A;font-weight:700;flex:0 0 auto;">—</span>The support team, systems, and AI behind the seat</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#EDE6DA;"><span style="color:#F2A24A;font-weight:700;flex:0 0 auto;">—</span>Performance management and quality</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#EDE6DA;"><span style="color:#F2A24A;font-weight:700;flex:0 0 auto;">—</span>Continuity — coverage if someone's out, no gaps</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.5;color:#EDE6DA;"><span style="color:#F2A24A;font-weight:700;flex:0 0 auto;">—</span>Benefits, payroll, taxes, and overhead</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM BEHIND THE SEAT ================= -->
+<section style="background:#ECE4D7;border-top:1px solid #DCD3C4;border-bottom:1px solid #DCD3C4;">
+  <div style="max-width:1200px;margin:0 auto;padding:90px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 72px;align-items:center;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#DE7A18;margin-bottom:16px;">Why it outperforms a solo hire</div>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.6vw,42px);line-height:1.06;letter-spacing:-0.015em;margin:0 0 16px;">One seat, a whole team behind it.</h2>
+      <p style="font-size:16px;line-height:1.65;color:#4A423B;margin:0;max-width:46ch;">A traditional hire is a single point of failure. Your Krowdit operator has specialists to lean on and systems to move faster — so you get more than one person's output, for the price of the salary alone.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;background:#FFFDF8;border:1px solid #DE7A18;border-radius:16px;padding:34px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;background:#1A1714;color:#F7F3EC;border-radius:10px;padding:9px 16px 9px 11px;">
+        <span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(247,243,236,0.16);flex:0 0 auto;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.3"></circle><path d="M5.5 20a6.5 6.5 0 0 1 13 0"></path></svg></span>
+        <span style="font-family:'Archivo',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:0.01em;">Your Krowdit Employee</span>
+      </div>
+      <div style="width:2px;height:24px;background:#C2B6A3;"></div>
+      <div style="width:100%;">
+        <div style="height:2px;background:#C2B6A3;margin:0 16.6%;"></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:#C2B6A3;"></div><div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;background:#FCFDFE;border:1px solid #DCD3C4;border-radius:9px;padding:13px 6px;"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#F1EEE7;color:#6B625A;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.3"></circle><path d="M5.5 20a6.5 6.5 0 0 1 13 0"></path></svg></span><span style="font-size:11.5px;font-weight:600;color:#4A423B;text-align:center;line-height:1.2;">Senior marketer</span></div></div>
+          <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:#C2B6A3;"></div><div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;background:#FCFDFE;border:1px solid #DCD3C4;border-radius:9px;padding:13px 6px;"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#F1EEE7;color:#6B625A;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 19a6 6 0 0 1 12 0"></path><path d="M16 5.2a3 3 0 0 1 0 5.6M22 19a6 6 0 0 0-4.5-5.8"></path></svg></span><span style="font-size:11.5px;font-weight:600;color:#4A423B;text-align:center;line-height:1.2;">Design team</span></div></div>
+          <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:#C2B6A3;"></div><div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;background:#FCFDFE;border:1px solid #DCD3C4;border-radius:9px;padding:13px 6px;"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#F1EEE7;color:#6B625A;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 19a6 6 0 0 1 12 0"></path><path d="M16 5.2a3 3 0 0 1 0 5.6M22 19a6 6 0 0 0-4.5-5.8"></path></svg></span><span style="font-size:11.5px;font-weight:600;color:#4A423B;text-align:center;line-height:1.2;">Ad ops team</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section id="book" style="max-width:1200px;margin:0 auto;padding:100px 24px;text-align:center;">
+  <div style="display:inline-flex;gap:8px;transform:skewX(-16deg);margin-bottom:30px;">
+    <span style="width:9px;height:44px;background:#DE7A18;display:block;"></span>
+    <span style="width:9px;height:44px;background:#DE7A18;opacity:0.55;display:block;"></span>
+    <span style="width:9px;height:44px;background:#DE7A18;opacity:0.28;display:block;"></span>
+  </div>
+  <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.02;letter-spacing:-0.02em;margin:0 auto;max-width:16ch;">See what the role looks like for you.</h2>
+  <p style="font-size:18px;line-height:1.6;color:#4A423B;margin:24px auto 0;max-width:520px;">Book a short consultation. We'll map the role, show you the numbers, and have your operator running in days.</p>
+  <div style="margin-top:36px;">
+    <a href="https://calendar.app.google/ZXH58B2NWMHAf2sW6" style="display:inline-block;font-size:17px;font-weight:600;color:#F7F3EC;background:#1A1714;padding:18px 34px;border-radius:12px;transition:background .2s,color .2s;" style-hover="background:#DE7A18;color:#1A1714;">Book a consultation</a>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A99C8B;margin-top:20px;">Opens your calendar · 20 minutes · No commitment</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="site-footer" style="background:#1A1714;color:#B3A794;border-top:1px solid #3A322A;">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px 30px;">
+      <div style="grid-column:1 / -1;max-width:420px;">
+        <a href="/#top" style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+          <span style="display:flex;gap:3px;transform:skewX(-16deg);">
+            <span style="width:5px;height:22px;background:#DE7A18;display:block;"></span>
+            <span style="width:5px;height:22px;background:#DE7A18;opacity:0.55;display:block;"></span>
+            <span style="width:5px;height:22px;background:#DE7A18;opacity:0.28;display:block;"></span>
+          </span>
+          <span style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;color:#F7F3EC;">Krowdit</span>
+        </a>
+        <p style="font-size:15px;line-height:1.6;color:#B3A794;margin:0;">The managed-workforce partner that delivers the output of the hire — for the price of the salary alone, with none of the risk.</p>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6E5F;margin-bottom:16px;">Solutions</div>
+        <a href="#" style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14.5px;color:#D8CFC0;padding:6px 0;" style-hover="color:#DE7A18;">Marketing <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1F8A5B;letter-spacing:0.08em;">LIVE</span></a>
+        <a href="#" style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14.5px;color:#8A7F73;padding:6px 0;" style-hover="color:#DE7A18;">Sales <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7A6E5F;letter-spacing:0.08em;">SOON</span></a>
+        <a href="#" style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14.5px;color:#8A7F73;padding:6px 0;" style-hover="color:#DE7A18;">Operations <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7A6E5F;letter-spacing:0.08em;">SOON</span></a>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6E5F;margin-bottom:16px;">Company</div>
+        <a href="#top" style="display:block;font-size:14.5px;color:#D8CFC0;padding:6px 0;" style-hover="color:#DE7A18;">How it works</a>
+        <a href="/#why" style="display:block;font-size:14.5px;color:#D8CFC0;padding:6px 0;" style-hover="color:#DE7A18;">Why Krowdit</a>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6E5F;margin-bottom:16px;">Contact</div>
+        <a href="mailto:contact@krowdit.ai" style="display:block;font-size:14.5px;color:#D8CFC0;padding:6px 0;" style-hover="color:#DE7A18;">contact@krowdit.ai</a>
+        <a href="https://calendar.app.google/ZXH58B2NWMHAf2sW6" style="display:block;font-size:14.5px;color:#D8CFC0;padding:6px 0;" style-hover="color:#DE7A18;">Book a consultation</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:52px;padding-top:24px;border-top:1px solid #3A322A;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#7A6E5F;">
+      <span>© 2026 Krowdit. All rights reserved.</span>
+      <span>We respect your data — we never sell it. <a href="#" style="color:#A99C8B;" style-hover="color:#DE7A18;">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { vw: 1200, scrolled: false, solutionsOpen: false, mobileOpen: false };
+
+  componentDidMount() {
+    this._r = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener('resize', this._r);
+    this.setState({ vw: window.innerWidth });
+    const sentinel = document.getElementById('top-sentinel');
+    if (sentinel && 'IntersectionObserver' in window) {
+      this._io = new IntersectionObserver((es) => {
+        const s = !es[0].isIntersecting;
+        if (s !== this.state.scrolled) this.setState({ scrolled: s });
+      }, { threshold: 0 });
+      this._io.observe(sentinel);
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._r);
+    if (this._io) this._io.disconnect();
+  }
+
+  renderVals() {
+    const vw = this.state.vw ?? 1200;
+    const isMobile = vw < 880;
+    const sc = this.state.scrolled;
+
+    const navStyle = {
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      transition: 'background .25s ease, border-color .25s ease',
+      background: sc ? 'rgba(247,243,236,0.9)' : '#F7F3EC',
+      backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
+      borderBottom: sc ? '1px solid #DCD3C4' : '1px solid #F7F3EC'
+    };
+    const desktopNav = { display: isMobile ? 'none' : 'flex', alignItems: 'center', gap: '30px' };
+    const hamburger = {
+      display: isMobile ? 'flex' : 'none', flexDirection: 'column', gap: '5px',
+      background: 'none', border: 'none', cursor: 'pointer', padding: '8px'
+    };
+    const solPanel = {
+      position: 'absolute', top: 'calc(100% + 12px)', left: '-16px', minWidth: '440px',
+      background: '#fff', border: '1px solid #DCD3C4', borderRadius: '14px', padding: '16px',
+      boxShadow: '0 24px 60px rgba(26,23,20,0.14)', zIndex: 60,
+      display: this.state.solutionsOpen ? 'block' : 'none'
+    };
+    const mobileMenu = {
+      position: 'fixed', inset: 0, zIndex: 70, background: '#F7F3EC',
+      padding: '22px 24px', display: this.state.mobileOpen ? 'flex' : 'none', flexDirection: 'column'
+    };
+
+    return {
+      navStyle, desktopNav, hamburger, solPanel, mobileMenu,
+      onSolEnter: () => this.setState({ solutionsOpen: true }),
+      onSolLeave: () => this.setState({ solutionsOpen: false }),
+      toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen })),
+      closeMobile: () => this.setState({ mobileOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
