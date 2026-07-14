@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Krowdit</title>
+  <rect width="64" height="64" rx="14" fill="#1A1714"/>
+  <g transform="translate(10.15 51) scale(.0281065 -.0281065)" fill="#F7F3EC">
+    <path d="M1311 102 1466 50V0H963V44L1089 94 568 648H366V750H580L1067 1257 911 1302V1352H1360V1302L1205 1251 646 696 677 762ZM423 1251V101L588 50V0H89V50L254 101V1251L89 1302V1352H588V1302Z"/>
+  </g>
+</svg>
